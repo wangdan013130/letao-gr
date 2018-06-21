@@ -24,7 +24,8 @@ $.fn.serializeTojson = function() {
 
 var APP = {
 	// 接口的基础路径
-	baseUrl: 'http://fullstack.net.cn:3000'
+	// baseUrl: 'http://fullstack.net.cn:3000'
+	baseUrl: 'http://localhost:3000'
 };
 
 

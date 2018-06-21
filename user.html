@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/system.css">
 	<script src="assets/jquery/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/artTemplate/template-native.js"></script>
 	<script src="js/common.js"></script>
 	<script src="js/user.js"></script>
 </head>
@@ -70,24 +71,35 @@
 	            </nav>
 	        </div>
 	        <div class="body">
-	        	<table class="table table-bordered">
-	        		<tr>
-	        			<th>用户名</th>
-	        			<th>电话</th>
-	        			<th>状态</th>
-	        			<th>操作</th>
-	        		</tr>
-	        		<tr>
-	        			<td>18500000000</td>
-	        			<td>18500000000</td>
-	        			<td>已启用</td>
-	        			<td>
-	        				<button type="button" class="btn btn-danger">禁用</button>
-	        			</td>
-	        		</tr>
+	        	<table class="table table-bordered" >
+					<tbody id="userBox">
+						<tr>
+							<th>用户名</th>
+							<th>电话</th>
+							<th>状态</th>
+							<th>操作</th>
+	        			</tr>
+					</tbody>
 	        	</table>
 	        </div>
 		</div>
 	</div>
+	<script type="text/html" id="userTpl">
+	<% for (var i = 0; i < rows.length; i++) { %>
+		<tr>
+			<td><%=rows[i].username%></td>
+			<td><%=rows[i].mobile%></td>
+			<td><%=rows[i].isDelete==1?'已启用':'已禁用'%></td>
+			<td>
+				<button type="button" 
+				class="btn statubtn <%=rows[i].isDelete==1?'btn-success':'btn-danger'%>"  
+				data-id="<%=rows[i].id%>" 
+				data-delete="<%=rows[i].isDelete%>">
+				<%=rows[i].isDelete==1?'启用':'禁用'%>
+			</button>
+			</td>
+		</tr>
+	<% } %>
+	</script>
 </body>
 </html>

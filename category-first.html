@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="css/system.css">
 	<script src="assets/jquery/jquery.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/artTemplate/template-native.js"></script>
 	<script src="js/common.js"></script>
+	<script src="js/category-first.js"></script>
 </head>
 <body>
 	<div class="system">
@@ -71,18 +73,13 @@
 	        <div class="body">
 	        	<button class="operation btn btn-primary" data-toggle="modal" data-target=".category-first">添加分类</button>
 	        	<table class="table table-bordered">
-	        		<tr>
-	        			<th>分类的编号</th>
-	        			<th>分类名称</th>
-	        		</tr>
-	        		<tr>
-	        			<td>1</td>
-	        			<td>运动馆</td>
-	        		</tr>
+					<tbody id="categoryBox">
+						
+					</tbody>
 	        	</table>
 	        	<div class="btn-group page">
-	        		<div class="btn btn-default">上一页</div>
-	        		<div class="btn btn-default">下一页</div>
+	        		<div class="btn btn-default" id="prev">上一页</div>
+	        		<div class="btn btn-default" id="next">下一页</div>
 	        	</div>
 	        </div>
 		</div>
@@ -102,11 +99,22 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">保存</button>
+					<button type="button" class="btn btn-primary" id="addCategoryFirst">保存</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
+	<script type="text/html" id="categoryTpl">
+	<tr>
+		<th>分类的编号</th>
+		<th>分类名称</th>
+	</tr>
+	<%for(var i =0;i< rows.length;i++) {%>
+		<tr>
+			<td><%=rows[i].id%></td>
+			<td><%=rows[i].categoryName%></td>
+		</tr>
+	<%}%>
+	</script>
 </body>
 </html>
